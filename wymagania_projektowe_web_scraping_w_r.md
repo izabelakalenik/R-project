@@ -4,7 +4,6 @@
 
 ## 1. Informacje organizacyjne i terminy
 
-* **Zadanie wstępne („na dziś”):** Wysłanie prowadzącemu roboczego adresu URL strony internetowej, z której będą pobierane dane.
 * **Ostateczny termin oddania projektu:** **29.11.2026 r.**
 * **Forma oddania:** Wszystkie wymagane pliki należy spakować do jednego archiwum **`.zip`** i wysłać drogą mailową.
 * **Materiały pomocnicze:** 
