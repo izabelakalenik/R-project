@@ -1,6 +1,6 @@
-source("./projekt/functions.R", encoding = "UTF8")
+source("./code/functions.R", encoding = "UTF8")
 
-n_pages <- 1   # 20 pages for all data
+n_pages <- 20  # number of products: 726
 
 
 # -------------------- Collect product links --------------------
@@ -34,5 +34,5 @@ data_raw <- bind_rows(products_list)   # invalid (NULL) products are skipped
 
 
 # -------------------- Save --------------------
-write_csv(data_raw, "../data/raw_data.csv")
+write_csv(data_raw, "./data/raw_data.csv")
 print(paste("Saved raw_data.csv, number of rows:", nrow(data_raw)))

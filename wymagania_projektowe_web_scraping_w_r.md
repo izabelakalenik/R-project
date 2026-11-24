@@ -7,7 +7,7 @@
 * **Ostateczny termin oddania projektu:** **29.11.2026 r.**
 * **Forma oddania:** Wszystkie wymagane pliki należy spakować do jednego archiwum **`.zip`** i wysłać drogą mailową.
 * **Materiały pomocnicze:** 
-  * Szablon raportu znajduje się na platformie **MS Teams** (`report/nazwisko1_nazwisko2.Rmd`).
+  * Szablon raportu znajduje się na platformie **MS Teams** (`nazwisko1_nazwisko2.Rmd`).
   * Dokładne nazewnictwo i struktura plików bazują na przykładowych kodach udostępnionych przez prowadzącego na zajęciach.
 
 ---
@@ -46,15 +46,15 @@ Na podstawie notatek oraz schematu z tablicy projekt musi składać się z nast�
 
 ### Lista plików, które muszą znaleźć się w paczce `.zip`:
 1. **`funkcje.R`** – plik zawierający własne, wielokrotnie wykorzystywane funkcje (jest to absolutne minimum wymagane dla zachowania porządku w kodzie).
-2. **`code/scraper.R`** – główny skrypt pobierający dane ze strony. Na początku pliku musi znajdować się odwołanie ładujące funkcje z odpowiednim kodowaniem:
+2. **`scraper.R`** – główny skrypt pobierający dane ze strony. Na początku pliku musi znajdować się odwołanie ładujące funkcje z odpowiednim kodowaniem:
    ```r
    source("funkcje.R", encoding = "UTF8")
    ```
-3. **Dane surowe (`dane_raw.csv`)** – plik `.csv` będący bezpośrednim wynikiem działania skryptu `code/scraper.R`.
+3. **Dane surowe (`dane_raw.csv`)** – plik `.csv` będący bezpośrednim wynikiem działania skryptu `scraper.R`.
 4. **Przygotowanie danych (`przygot_danych.R`)** – skrypt wczytujący `dane_raw.csv` oraz czyszczący i przekształcający dane do postaci gotowej do analizy i modelowania.
 5. **Dane przygotowane oraz kod analizy/modelu** – przetworzony zbiór danych oraz skrypt `.R`, w którym przeprowadzana jest właściwa analiza i budowa modelu.
-6. **Plik źródłowy raportu (`report/nazwisko1_nazwisko2.Rmd`)** – plik R Markdown zgodny z szablonem prowadzącego (w przypadku pracy w parze oba nazwiska oddzielone podkreślnikiem).
-7. **Raport wynikowy (`report/nazwisko1_nazwisko2.html`)** – wygenerowany (skompilowany) z pliku `.Rmd` raport w formacie HTML.
+6. **Plik źródłowy raportu (`nazwisko1_nazwisko2.Rmd`)** – plik R Markdown zgodny z szablonem prowadzącego (w przypadku pracy w parze oba nazwiska oddzielone podkreślnikiem).
+7. **Raport wynikowy (`nazwisko1_nazwisko2.html`)** – wygenerowany (skompilowany) z pliku `.Rmd` raport w formacie HTML.
 
 ---
 
@@ -79,7 +79,7 @@ Na podstawie notatek oraz schematu z tablicy projekt musi składać się z nast�
 
 ---
 
-## 6. Zasady tworzenia raportu (`report/nazwisko1_nazwisko2.Rmd` -> `.html`)
+## 6. Zasady tworzenia raportu (`nazwisko1_nazwisko2.Rmd` -> `.html`)
 
 Raport ma być zwięzłą **syntezą** projektu, a nie zrzutem całego kodu.
 
@@ -107,7 +107,7 @@ Raport ma być zwięzłą **syntezą** projektu, a nie zrzutem całego kodu.
 
 Prowadzący sprawdza oddane projekty etapami, poczynając od wymagań minimalnych:
 
-1. **Etap 1 (Minimum):** Czy działają skrypty `funkcje.R` oraz `code/scraper.R`.
+1. **Etap 1 (Minimum):** Czy działają skrypty `funkcje.R` oraz `scraper.R`.
 2. **Etap 2:** Czy poprawnie wygenerowano zbiór surowy (`dane_raw.csv`) oraz dane przygotowane do analizy (`przygot_danych.R`).
-3. **Etap 3:** Czy załączono poprawny plik raportu (`report/nazwisko1_nazwisko2.Rmd`) oraz wygenerowany plik wynikowy `report/nazwisko1_nazwisko2.html` (wraz z plikami potrzebnymi do jego skompilowania).
+3. **Etap 3:** Czy załączono poprawny plik raportu (`nazwisko1_nazwisko2.Rmd`) oraz wygenerowany plik wynikowy `nazwisko1_nazwisko2.html` (wraz z plikami potrzebnymi do jego skompilowania).
 4. **Etap 4:** Czy całość została poprawnie spakowana w plik `.zip` i wysłana mailem w terminie.
