@@ -8,34 +8,22 @@ BASE_URL  <- "https://www.e-glamour.pl"
 my_agent <- user_agent("Student project PWr - Analysis of perfumes")
 
 
-# -------------------- Selectors --------------------
-SEL_LINK          <- "a.product-link"
-SEL_NAME          <- "h1 span.title"
-SEL_BRAND         <- "h1 a.producer-name"
-SEL_PRICE_BLOCK   <- "div.c-product-price"
-SEL_PRICE_REG     <- "p > strong"
-SEL_PRICE_PROMO   <- "div > strong"
-SEL_RATING        <- "div.c-product-reviews-rating span.reviews-count:nth-child(1)"
-SEL_REVIEWS_COUNT <- "div.c-product-reviews-rating span.reviews-count:nth-child(2)"
-SEL_NOTES         <- "p.c-product-parameters-parameter span.value"
-SEL_VOLUME        <- "h1 span.short-title"
-SEL_TYPE          <- "h1 span.short-title"
-SEL_SPEC          <- "div.c-product-parameters table.table-default tr"
-
-
 # -------------------- Download the page --------------------
 get_page <- function(url) {
-  response <- tryCatch(GET(url, my_agent), error = function(e) NULL)
+  tryCatch({
+    response <- GET(url, my_agent)
+    status <- status_code(response)
 
-  if (is.null(response)) {
-    print(paste("Connection error:", url))
+    if (status < 200 || status >= 400) {
+      message("HTTP error: ", status, " for URL: ", url)
+      return(NULL)
+    } else {
+      content(response, encoding = "UTF-8")
+    }
+  }, error = function(e) {
+    message("Failed to fetch page ", url, ": ", conditionMessage(e))
     return(NULL)
-  }
-  if (http_error(response)) {
-    print(paste("HTTP error", status_code(response), "for:", url))
-    return(NULL)
-  }
-  content(response)
+  })
 }
 
 
@@ -44,6 +32,8 @@ get_links <- function(page_nr) {
   url <- paste0(START_URL, "?page=", page_nr)
   page <- get_page(url)
   if (is.null(page)) return(c())
+
+  SEL_LINK  <- "a.product-link"
 
   links <- page %>%
     html_elements(SEL_LINK) %>%
@@ -57,6 +47,18 @@ get_links <- function(page_nr) {
 get_product <- function(url) {
   page <- get_page(url)
   if (is.null(page)) return(NULL)
+
+  SEL_NAME          <- "h1 span.title"
+  SEL_BRAND         <- "h1 a.producer-name"
+  SEL_PRICE_BLOCK   <- "div.c-product-price"
+  SEL_PRICE_REG     <- "p > strong"
+  SEL_PRICE_PROMO   <- "div > strong"
+  SEL_RATING        <- "div.c-product-reviews-rating span.reviews-count:nth-child(1)"
+  SEL_REVIEWS_COUNT <- "div.c-product-reviews-rating span.reviews-count:nth-child(2)"
+  SEL_NOTES         <- "p.c-product-parameters-parameter span.value"
+  SEL_VOLUME        <- "h1 span.short-title"
+  SEL_TYPE          <- "h1 span.short-title"
+  SEL_SPEC          <- "div.c-product-parameters table.table-default tr"
 
   price_block <- page %>% html_element(SEL_PRICE_BLOCK)
 

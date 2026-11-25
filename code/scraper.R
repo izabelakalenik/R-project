@@ -1,6 +1,6 @@
 source("./code/functions.R", encoding = "UTF8")
 
-n_pages <- 20  # number of products: 726
+n_pages <- 278  # all possible pages, number of products: 9972
 
 
 # -------------------- Collect product links --------------------
