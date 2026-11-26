@@ -74,7 +74,7 @@ data <- raw_data %>%
     gender        = get_spec(spec, "Dla kogo\\?"),
     product_type  = get_spec(spec, "Rodzaj produktu"),
     scent_type    = get_spec(spec, "Rodzaj zapachu"),
-    release_year  = as.integer(get_spec(spec, "Rok wydania")),
+    release_year = as.integer(str_extract(get_spec(spec, "Rok wydania"), "\\d{4}")),
 
     notes         = str_remove(notes, "^,\\s*"),
     has_notes     = !is.na(notes)
